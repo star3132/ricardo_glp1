@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $cols = (int)$m[2];
             $hash = bin2hex(random_bytes(32));
 
-            $db->prepare('INSERT INTO boxes (hash, name, rows, cols) VALUES (?, ?, ?, ?)')
+            $db->prepare('INSERT INTO boxes (hash, name, `rows`, `cols`) VALUES (?, ?, ?, ?)')
                ->execute([$hash, $name, $rows, $cols]);
 
             $flash = 'Box "' . htmlspecialchars($name) . '" created successfully.';
@@ -182,7 +182,6 @@ $sizes = ['3x3','4x4','5x5','6x6','7x7','8x8','9x9','10x10'];
   </script>
   <!-- QR code library -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"
-          integrity="sha512-CNgIRecGo7nphbeZ04Sc13ka07paqdeTu0WR1IM4kNcpmBAUSHSE1QMoBucfTcKDe4As5afAprVLas/tCF5rJQ=="
           crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="../assets/js/admin.js"></script>
 </body>

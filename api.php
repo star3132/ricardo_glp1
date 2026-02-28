@@ -40,7 +40,7 @@ try {
             }
 
             // Validate box exists
-            $boxStmt = db()->prepare('SELECT rows, cols FROM boxes WHERE id = ? LIMIT 1');
+            $boxStmt = db()->prepare('SELECT `rows`, `cols` FROM boxes WHERE id = ? LIMIT 1');
             $boxStmt->execute([$boxId]);
             $box = $boxStmt->fetch();
             if (!$box) throw new RuntimeException('Box not found');

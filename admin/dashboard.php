@@ -20,7 +20,7 @@ $accessWeek   = (int)$db->query(
 
 // ---- Recent access log -------------------------------------
 $recentLogs = $db->query(
-    'SELECT al.accessed_at, al.ip_address, al.user_agent, b.name AS box_name, b.rows, b.cols
+    'SELECT al.accessed_at, al.ip_address, al.user_agent, b.name AS box_name, b.`rows`, b.`cols`
      FROM access_logs al
      JOIN boxes b ON b.id = al.box_id
      ORDER BY al.accessed_at DESC
@@ -29,7 +29,7 @@ $recentLogs = $db->query(
 
 // ---- Most accessed boxes -----------------------------------
 $topBoxes = $db->query(
-    'SELECT b.name, b.rows, b.cols, COUNT(al.id) AS hits
+    'SELECT b.name, b.`rows`, b.`cols`, COUNT(al.id) AS hits
      FROM boxes b
      LEFT JOIN access_logs al ON al.box_id = b.id
      GROUP BY b.id
